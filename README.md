@@ -3,8 +3,9 @@ As we know LAMP (Linux Apache MySQL and PHP) and Redis is a key/value database a
 It has been useful if the design is stored key/value pair we can pass this value to LAMP to display on the website. In order to that we need to install PHP extension to support Redis. See Ref. for details.
 This option is build-in Dockerfile which will have Apache and PHP. When running phpinfo() in /src/index2.php and if everything works should see PHP has Redis supported see below.
 ![PHP support Redis](https://github.com/thomasalvatran/Redis-LAMP/blob/master/src/img/2019-09-07%2010_53_36-Greenshot.png)
+
+### Dockerfile:	
 <pre>
-Dockerfile	   
 #FROM php:7.3.2-fpm-stretch
 FROM php:7.2.2-apache
 # CMD echo "ServerName localhost" >> /etc/apache2/apache2.conf
@@ -34,8 +35,9 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
 # cleanup
 && docker-php-source delete
 2019-09-07 10_53_36-Greenshot
-Build:
-
+</pre>
+### Build:
+<pre>
 tovantran@ubuntu:~/Downloads$ ls
 git clone https://github.com/thomasalvatran/Redis-LAMP.git
 cd Redis-LAMP
@@ -44,19 +46,24 @@ Go to redis hub.docker.com/_/redis
 
 docker pull redis
 docker images (docker image ls)  to see if 2 images lanp and redis existing then run them as the same network called multiple so they can communicate to each other.
-Run:
-
+</pre>
+### Run:
+<pre>
 sudo docker run --net multiple --name mylamp2 -p 127.0.0.1:80:80 -v $(pwd)/src:/var/www/html/ -t lamp
 sudo docker run --net multiple --name myredis -t redis
-Checking:
-
+</pre>
+### Checking:
+<pre>
 tovantran@ubuntu:~/Downloads/lamp-stack-video$ sudo docker ps
 CONTAINER ID     IMAGE       COMMAND	                   	CREATED		STATUS		PORTS				NAMES
 2ece59836815     lamp        "docker-php-entrypoi…"		33 minutes ago	Up 33 minutes	80/tcp				mylamp2
 b4d6f37bc56e     redis       "docker-entrypoint.s…"		40 minutes ago	Up 40 minutes	6379/tcp			myredis
-Testing:
-Coding from Ref.[2] called index2.php then execute the code in a browser typing http://localhost/index2.php and resulting echo on the screen as we see it.
+</pre>
 
+### Testing:
+
+Coding from Ref.[2] called index2.php then execute the code in a browser typing http://localhost/index2.php and resulting echo on the screen as we see it.
+<pre>
 Connection to server successfully
 Set string in redis
 Get string in redis:Redis Tutorial
@@ -74,8 +81,10 @@ $redis-&gt;set('tutorial-name',"Redis Tutorial");
 echo "Get string in redis:" .$redis-&gt;get("tutorial-name");
  
 ?>
-Verifying containers for lamp:
+</pre>
 
+### Verifying containers for lamp:
+<pre>
 sudo docker exec -it 2ece59836815 bash
 root@2ece59836815:/var/www/html# cat /etc/hosts
 127.0.0.1 localhost
