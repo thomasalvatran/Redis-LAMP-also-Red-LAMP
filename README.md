@@ -4,7 +4,7 @@ It has been useful if the design is stored key/value pair we can pass this value
 This option is build-in Dockerfile which will have Apache and PHP. When running phpinfo() in /src/index2.php and if everything works should see PHP has Redis supported see below.
 ![PHP support Redis](https://github.com/thomasalvatran/Redis-LAMP/blob/master/src/img/2019-09-07%2010_53_36-Greenshot.png)
 <pre>
-+ Source code	   
+Dockerfile	   
 #FROM php:7.3.2-fpm-stretch
 FROM php:7.2.2-apache
 # CMD echo "ServerName localhost" >> /etc/apache2/apache2.conf
@@ -60,7 +60,7 @@ Coding from Ref.[2] called index2.php then execute the code in a browser typing 
 Connection to server successfully
 Set string in redis
 Get string in redis:Redis Tutorial
-+ Source code	   
+index2.php (testing connection between LAMP and Redis server)	   
 <?php
 header('Content-type: text/plain');  //for /n
 //Connection to Redis Server on localhost
