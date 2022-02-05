@@ -1,0 +1,37 @@
+Linux Yocto Project including layers and recipients.
+Docker containers, LAMP, Redis…
+Building Predix Edge OS based on Yocto (Edge Cloud i.e CamCloud)
+Target: Server based on Intel NUC(i5/i7 Intel®) with 1 TB SSD and 64 GB of RAM
+OS(Linux): Ubuntu 16.04 LTS
+Languages: C/C++, PHP, Java, Javascript, Python. Servers containers: Redis, LAMP and MQTT broker
+Tools: Visual Studio Code (VSC) and Eclipse workbench
+
+These are projects that I worked on. Projects done and undone because they are transferred/stopped/delayed at later days because many projects are in the queue.
+
+1. Set up Proxy security and training (done)
+2. Yocto on NUC (done) why ?? it is PoC (proof of concepts before implementing it). Ref. github.com/thomasalvatran/poky
+3. Predix Edge OS (PEOS) on NUC through 3 versions 1, 2, 3 add script to support 1 TB SSD(solid state drive) will auto mount at /mnt/data to store applications (done) and using it to the fullest and proved to be working, it shows on df.
+With this OS into the hardware NUC, we are having 2 prototype systems to test and finally v3 has Predix Edge Technician Console(PETC) working. It is a local management via a secured browser but no one supports it.. It is good to test systemd (daemon). Then I moved to new project right away.
+4. Mosquitto MQTT pub/sub using Mostquitto/Eclipse (70% done) then stop
+5. Test Redis API query (10%) then stop read from files instead.
+6. Display the result into website (done) from files in /mnt/data
+7. Display the result from Redis Server into the website using PHP and later using API replacement for PETC in display the data on the web browser using LAMP. Implement Redis-LAMP (done) need key value to test it. PEOS using Redis as non SQL database. Nice project 2 weeks most the main problem is disable proxy during compile. Because it works at home and it fails at GE. Document under gits/Redis-LAMP. It can replace PETC or working together with PETC (Predix Edge Technician Console it is just a GUI). Ref.4
+8. Raw Socket (50% is done) input from the experts, it is not easy need implement a MAC VLAN for outside the container. Currently only working inside the container.
+….any more…
+Last weeks
+9. Test code rt-test ( just started it is needed to run in native linux (NUC) then start a new project.
+10. Test code responsive/performance test.
+
+These projects only give so little time to finish. They expect that you have worked all of these projects before but some of the projects are my first time working. Their expectation is to resolve or finish in 2, 3 days which is sometimes impossible. Predix Edge OS takes 1-2 hours to compile. Luckily I finished in my first 2 weeks then ported it to the NUC then I add the driver for SSD(solid-state drive) so we can use all 1 Terabyte of SSD to store applications before they did not have it. Then I started to create the second NUC for another group to test it. It works flawlessly which can be verified with PETC and with my website using LAMP see Ref.4, I called it Red LAMP because it pulls data from REDIS and display on the website.
+This is an example of the project that they just want you to work hard but sometimes people goes to vacations or different time zones. Predix Edge OS from different groups working together for example the PETC in California and others from UK which I did not work. I just have to build the kernel for NUC a new target that using Intel I5 and I7 and using their tools to test it.
+
+References:
+1. Downloads www.yoctoproject.org/docs/1.1/yocto-project-qs/yocto-project-qs
+2. View github.com/thomasalvatran/poky
+3. HowTo youtu.be/zNLYanJAQ3s
+4. Red LAMP (Redis-LAMP) github.com/thomasalvatran/Redis-LAMP
+5. My profile in github is thomasalvatran all projects under github.com/thomasalvatran
+When I was young I admired Thomas Alva Edison so I use my nick up till now as thomasalvatran but I was despaired when working at GE because
+GE was founded by Thomas Alva Edison in 1892. And I was wondering why GE stock is so low as always and now I know.
+
+Filed under: AI, C/C++, Cloud by adminContact via Skype
